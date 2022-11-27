@@ -3,11 +3,11 @@ package com.demo.bankapp.entity;
 public class Account {
 
     private Long id;
-    private Integer clientIdnp;
+    private String clientIdnp;
     private String currency;
     private Double funds;
 
-    public Account(Long id, Integer clientIdnp, String currency, Double funds) {
+    public Account(Long id, String clientIdnp, String currency, Double funds) {
         this.id = id;
         this.clientIdnp = clientIdnp;
         this.currency = currency;
@@ -22,11 +22,11 @@ public class Account {
         this.id = id;
     }
 
-    public Integer getClientIdnp() {
+    public String getClientIdnp() {
         return clientIdnp;
     }
 
-    public void setClientIdnp(Integer clientIdnp) {
+    public void setClientIdnp(String clientIdnp) {
         this.clientIdnp = clientIdnp;
     }
 

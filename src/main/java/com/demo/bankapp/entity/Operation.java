@@ -1,14 +1,24 @@
 package com.demo.bankapp.entity;
 
 public class Operation {
+    private Long id;
     private Long accountId;
     private Double amount;
     private String date;
 
-    public Operation(Long accountId, Double amount, String date) {
+    public Operation(Long id, Long accountId, Double amount, String date) {
+        this.id = id;
         this.accountId = accountId;
         this.amount = amount;
         this.date = date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getAccountId() {
@@ -37,8 +47,9 @@ public class Operation {
 
     @Override
     public String toString() {
-        return "Operations{" +
-                "accountId=" + accountId +
+        return "Operation{" +
+                "id=" + id +
+                ", accountId=" + accountId +
                 ", amount=" + amount +
                 ", date='" + date + '\'' +
                 '}';

@@ -5,14 +5,14 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
-    private String number;
+    private String phoneNumber;
 
     public Client(String idnp, String firstName, String lastName, String email, String number) {
         this.idnp = idnp;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.number = number;
+        this.phoneNumber = number;
     }
 
     public String getIdnp() {
@@ -47,12 +47,12 @@ public class Client {
         this.email = email;
     }
 
-    public String getNumber() {
-        return number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Client {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", number='" + number + '\'' +
+                ", number='" + phoneNumber + '\'' +
                 '}';
     }
 }
