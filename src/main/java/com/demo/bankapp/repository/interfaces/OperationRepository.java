@@ -1,4 +1,4 @@
-package com.demo.bankapp.repository;
+package com.demo.bankapp.repository.interfaces;
 
 import com.demo.bankapp.entity.Client;
 import com.demo.bankapp.entity.Operation;
