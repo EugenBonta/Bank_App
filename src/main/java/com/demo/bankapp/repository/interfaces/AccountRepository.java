@@ -8,8 +8,8 @@ import java.util.List;
 public interface AccountRepository {
     void create(Account acount);
     List<Account> findAll();
-    Account findById(Long idnp);
-    void update(Long id, Client client);
+    Account findById(Long id);
+    void update(Long id, Account account);
     void delete(Long id);
     boolean accountExist(Long id);
 }

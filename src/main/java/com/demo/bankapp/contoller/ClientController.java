@@ -3,10 +3,8 @@ package com.demo.bankapp.contoller;
 import com.demo.bankapp.entity.Client;
 import com.demo.bankapp.repository.impl.ClientRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +15,12 @@ public class ClientController {
     @Autowired
     private ClientRepositoryImpl clientRepository;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody Client client){
+        clientRepository.create(client);
+    }
+
     @GetMapping
     public List <Client> getAll() {
         return clientRepository.findAll();
@@ -26,5 +30,4 @@ public class ClientController {
     public Client getByIdnp(@PathVariable String idnp){
         return clientRepository.findByIdnp(idnp);
     }
-
 }

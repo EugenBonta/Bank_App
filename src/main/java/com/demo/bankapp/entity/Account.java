@@ -7,8 +7,7 @@ public class Account {
     private String currency;
     private Double funds;
 
-    public Account(Long id, String clientIdnp, String currency, Double funds) {
-        this.id = id;
+    public Account(String clientIdnp, String currency, Double funds) {
         this.clientIdnp = clientIdnp;
         this.currency = currency;
         this.funds = funds;

@@ -8,10 +8,9 @@ import java.util.List;
 public interface OperationRepository {
     void create(Operation operation);
     List<Operation> findAll();
-    Client findByDate(String date);
-    Client findById(Long id);
-    Client findByName(Long id);
-    void update(Long id, Operation operation);
+    Operation findByDate(String date);
+    Operation findById(Long id);
+    Operation findByIdnp(String idnp);
     void delete(Long id);
     boolean clientExist(Long id);
 }

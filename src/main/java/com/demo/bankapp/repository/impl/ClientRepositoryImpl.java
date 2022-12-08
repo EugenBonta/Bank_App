@@ -50,7 +50,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     @Override
     public void update(String idnp, Client client) {
         jdbcTemplate.update(
-                "update client set idnp = ?, first_name = ?, last_name = ?, email = ? where idnp =?",
+                "update client set idnp = ?, first_name = ?, last_name = ?, email = ? where idnp = ?",
                 client.getIdnp(), client.getFirstName(), client.getLastName(), client.getEmail(), idnp);
     }
 
