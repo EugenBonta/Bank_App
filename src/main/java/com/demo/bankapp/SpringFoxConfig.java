@@ -12,9 +12,6 @@ import java.util.List;
 
 @Configuration
 
-/**
- * http://localhost:5050/swagger-ui.html#/
- */
 
 public class SpringFoxConfig {
     @Bean

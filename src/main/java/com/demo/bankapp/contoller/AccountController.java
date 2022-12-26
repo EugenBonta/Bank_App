@@ -1,7 +1,6 @@
 package com.demo.bankapp.contoller;
 
 import com.demo.bankapp.entity.Account;
-import com.demo.bankapp.entity.Client;
 import com.demo.bankapp.repository.impl.AccountRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

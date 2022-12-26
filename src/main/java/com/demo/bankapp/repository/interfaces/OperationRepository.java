@@ -1,6 +1,5 @@
 package com.demo.bankapp.repository.interfaces;
 
-import com.demo.bankapp.entity.Client;
 import com.demo.bankapp.entity.Operation;
 
 import java.util.List;
@@ -12,5 +11,6 @@ public interface OperationRepository {
     Operation findById(Long id);
     Operation findByIdnp(String idnp);
     void delete(Long id);
-    boolean clientExist(Long id);
+    boolean operationExist(Long id);
+    boolean transfer(Long id1, Long id2, Double amount);
 }

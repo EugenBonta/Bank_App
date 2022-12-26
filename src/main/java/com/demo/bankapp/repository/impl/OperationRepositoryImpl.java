@@ -77,10 +77,25 @@ public class OperationRepositoryImpl implements OperationRepository {
     }
 
     @Override
-    public boolean clientExist(Long id) {
-        Integer count = jdbcTemplate.queryForObject("select count(*) from client where idnp = ?",
+    public boolean operationExist(Long id) {
+        Integer count = jdbcTemplate.queryForObject("select count(*) from operation where id = ?",
                 Integer.class, id);
 
         return count > 0;
+    }
+    @Override
+    public boolean transfer(Long idFrom, Long idTo, Double amount){
+        String currencyFrom = jdbcTemplate.queryForObject("select currency from account where id = ?", String.class, idFrom);
+        String currencyTo = jdbcTemplate.queryForObject("select currency from account where id = ?",  String.class, idTo);
+        if (currencyFrom.equals(currencyTo)){
+            jdbcTemplate.update(
+                    "update account set funds = funds - ? where id = ?",
+                    amount, idFrom);
+            jdbcTemplate.update(
+                    "update account set funds = funds + ? where id = ?",
+                    amount, idTo);
+            return true;
+        }
+        return false;
     }
 }
