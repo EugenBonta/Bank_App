@@ -32,4 +32,20 @@ public class ClientController {
     public Client getByIdnp(@PathVariable String idnp){
         return clientRepository.findByIdnp(idnp);
     }
+
+    @PutMapping("/{idnp}")
+    public Client update(@PathVariable String idnp, @RequestBody Client client) {
+        return clientRepository.update(idnp, client);
+    }
+
+    @DeleteMapping("/{idnp}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable String idnp){
+        clientRepository.delete(idnp);
+    }
+
+    @GetMapping("/exists/{idnp}")
+    public Boolean clientExists(@PathVariable String idnp){
+        return clientRepository.clientExist(idnp);
+    }
 }

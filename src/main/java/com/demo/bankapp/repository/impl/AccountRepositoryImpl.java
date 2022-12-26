@@ -15,16 +15,10 @@ public class AccountRepositoryImpl implements AccountRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void create(Account account) {
-        jdbcTemplate.update(
-                "insert into account values(?, ?, ?, ?)",
-                account.getId(), account.getClientIdnp(), account.getCurrency(), account.getFunds() );
-    }
-
-    @Override
     public List<Account> findAll() {
         return jdbcTemplate.query("select * from account", (account, rowNum) ->
                 new Account(
+                        account.getLong("id"),
                         account.getString("client_idnp"),
                         account.getString("currency"),
                         account.getDouble("funds")
@@ -35,10 +29,18 @@ public class AccountRepositoryImpl implements AccountRepository {
         return jdbcTemplate.queryForObject("select * from account where id = ?",
                 (account, rowNum) ->
                         new Account(
+                                account.getLong("id"),
                                 account.getString("client_idnp"),
                                 account.getString("currency"),
                                 account.getDouble("funds")
                         ), id);
+    }
+
+    @Override
+    public void create(Account account) {
+        jdbcTemplate.update(
+                "insert into account values(null, ?, ?, ?)",
+                account.getClientIdnp(), account.getCurrency(), account.getFunds() );
     }
 
     @Override
@@ -60,5 +62,20 @@ public class AccountRepositoryImpl implements AccountRepository {
                 Integer.class, id);
 
         return count > 0;
+    }
+
+    public Account operate(Long accountId, Double amount) {
+        jdbcTemplate.update(
+                "update account set funds = funds + ? where id = ?",
+                amount, accountId);
+
+        return jdbcTemplate.queryForObject("select * from account where id = ?",
+                (account, rowNum) ->
+                        new Account(
+                                account.getLong("id"),
+                                account.getString("client_idnp"),
+                                account.getString("currency"),
+                                account.getDouble("funds")
+                        ), accountId);
     }
 }

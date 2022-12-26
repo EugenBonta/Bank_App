@@ -7,10 +7,10 @@ import java.util.List;
 public interface OperationRepository {
     void create(Operation operation);
     List<Operation> findAll();
-    Operation findByDate(String date);
+    List<Operation> findByDate(String date);
     Operation findById(Long id);
-    Operation findByIdnp(String idnp);
+    List<Operation> findByIdnp(String idnp);
     void delete(Long id);
-    boolean operationExist(Long id);
+    boolean operationExists(Long id);
     boolean transfer(Long id1, Long id2, Double amount);
 }
